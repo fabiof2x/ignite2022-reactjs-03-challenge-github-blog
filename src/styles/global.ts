@@ -12,8 +12,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-      background: ${({ theme }) => theme.colors["base-background"]};
-      color: ${({ theme }) => theme.colors["base-text"]};
+      background: ${({ theme }) => theme.colors['base-background']};
+      color: ${({ theme }) => theme.colors['base-text']};
       line-height: 160%;
       -webkit-font-smoothing: antialiased;
     }

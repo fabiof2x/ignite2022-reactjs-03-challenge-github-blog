@@ -1,6 +1,6 @@
 export const defaultTheme = {
   colors: {
-    'blue': '#3294F8',
+    blue: '#3294F8',
     'base-title': '#E7EDF4',
     'base-subtitle': '#C4D4E3',
     'base-text': '#AFC2D4',
@@ -18,6 +18,6 @@ export const defaultTheme = {
     'title-title-s': '1.125rem',
     'text-m': '1rem',
     'text-s': '0.875rem',
-    'link': '0.75rem',
-  }
+    link: '0.75rem',
+  },
 } as const
