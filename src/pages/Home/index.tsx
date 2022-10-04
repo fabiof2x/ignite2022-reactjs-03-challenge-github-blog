@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { PostData } from '../../interfaces/PostData'
-import { ProfileData } from '../../interfaces/profileData'
+import { PostDataDTO } from '../../interfaces/PostDataDTO'
+import { ProfileData } from '../../interfaces/ProfileData'
+
 import { api } from '../../lib/axios'
 import { PostCard } from './components/PostCard'
 import { ProfileCard } from './components/ProfileCard'
@@ -12,7 +13,7 @@ const repoName = 'ignite2022-reactjs-03-challenge-github-blog-posts'
 
 export function Home() {
   const [profileData, setProfileData] = useState<ProfileData>({} as ProfileData)
-  const [postsData, setPostsData] = useState<PostData[]>([])
+  const [postsData, setPostsData] = useState<PostDataDTO[]>([])
 
   async function fetchProfileData() {
     const response = await api.get(`users/${username}`)

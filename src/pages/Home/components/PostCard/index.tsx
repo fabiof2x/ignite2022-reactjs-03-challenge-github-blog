@@ -1,20 +1,27 @@
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
-import { PostData } from '../../../../interfaces/PostData'
+import { useNavigate } from 'react-router-dom'
+import { PostDataDTO } from '../../../../interfaces/PostDataDTO'
 import { PostCardContainer, PostCardHeader, PostContent } from './styles'
 
 interface PostDataProps {
-  post: PostData
+  post: PostDataDTO
 }
 
 export function PostCard({ post }: PostDataProps) {
-  console.log(post)
+  const navigate = useNavigate()
+
+  function handleShowPost(post: PostDataDTO) {
+    navigate('/post', {
+      state: post,
+    })
+  }
+
   return (
-    <PostCardContainer href="/post">
+    <PostCardContainer onClick={() => handleShowPost(post)}>
       <PostCardHeader>
         <h2>{post.title}</h2>
         <span>
-          {' '}
           {formatDistanceToNow(new Date(post.created_at), {
             addSuffix: true,
             locale: ptBR,

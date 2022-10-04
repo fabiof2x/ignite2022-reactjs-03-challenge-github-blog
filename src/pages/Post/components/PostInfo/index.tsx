@@ -16,8 +16,15 @@ import {
   PostData,
 } from './styles'
 import { useNavigate } from 'react-router-dom'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import { PostDataDTO } from '../../../../interfaces/PostDataDTO'
 
-export function PostInfo() {
+export interface PostInfoProps {
+  post: PostDataDTO
+}
+
+export function PostInfo({ post }: PostInfoProps) {
   const navigate = useNavigate()
 
   return (
@@ -27,23 +34,27 @@ export function PostInfo() {
           <FontAwesomeIcon icon={faChevronLeft} />
           Voltar
         </Link>
-        <Link href="#">
+        <Link href={post.html_url} target="_blank">
           Ver no Github
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </Link>
       </PostInfoContainer>
-      <PostTitle>Boas práticas para devs em início de carreira</PostTitle>
+      <PostTitle>{post.title}</PostTitle>
       <PostDataContainer>
         <PostData>
           <FontAwesomeIcon icon={faGithub} />
-          fabiof2x
+          {post.user.login}
         </PostData>
         <PostData>
           <FontAwesomeIcon icon={faCalendarDay} />
-          há 2 meses
+          {formatDistanceToNow(new Date(post.created_at), {
+            addSuffix: true,
+            locale: ptBR,
+          })}
         </PostData>
         <PostData>
-          <FontAwesomeIcon icon={faComment} />0 comentários
+          <FontAwesomeIcon icon={faComment} />
+          {post.comments} {post.comments === 1 ? 'comentário' : 'comentários'}
         </PostData>
       </PostDataContainer>
     </PostCardContainer>

@@ -1,4 +1,4 @@
-export interface PostData {
+export interface PostDataDTO {
   title: string
   body: string
   created_at: string
