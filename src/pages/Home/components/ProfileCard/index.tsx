@@ -9,6 +9,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import {
   ProfileCardContainer,
   ProfileCardAvatar,
+  ProfileCardInfos,
   ProfileUserContainer,
   ProfileName,
   GithubLink,
@@ -16,41 +17,40 @@ import {
   ProfileInfoContainer,
   ProfileInfo,
 } from './styles'
+import { ProfileData } from '../../../../interfaces/profileData'
 
-export function ProfileCard() {
+interface ProfileCardProps {
+  data: ProfileData
+}
+
+export function ProfileCard({ data }: ProfileCardProps) {
   return (
     <ProfileCardContainer>
-      <ProfileCardAvatar
-        src="http://github.com/fabiof2x.png"
-        alt="Foto de Fábio Dias"
-      />
-      <div>
+      <ProfileCardAvatar src={data.avatar_url} alt={`Foto de ${data.name}`} />
+      <ProfileCardInfos>
         <ProfileUserContainer>
-          <ProfileName>Fábio Dias</ProfileName>
-          <GithubLink href="http://github.com/fabiof2x" target="_blank">
+          <ProfileName>{data.name}</ProfileName>
+          <GithubLink href={`http://github.com/${data.login}`} target="_blank">
             Github
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </GithubLink>
         </ProfileUserContainer>
-        <ProfileBio>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-          viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-          pulvinar vel mass.
-        </ProfileBio>
+        <ProfileBio>{data.bio}</ProfileBio>
         <ProfileInfoContainer>
           <ProfileInfo>
             <FontAwesomeIcon icon={faGithub} />
-            fabiof2x
+            {data.login}
           </ProfileInfo>
           <ProfileInfo>
             <FontAwesomeIcon icon={faLocationDot} />
-            Brasília-DF
+            {data.location}
           </ProfileInfo>
           <ProfileInfo>
-            <FontAwesomeIcon icon={faUserGroup} />7
+            <FontAwesomeIcon icon={faUserGroup} />
+            {data.followers}
           </ProfileInfo>
         </ProfileInfoContainer>
-      </div>
+      </ProfileCardInfos>
     </ProfileCardContainer>
   )
 }

@@ -17,6 +17,10 @@ export const ProfileCardAvatar = styled.img`
   margin-left: 0.5rem;
 `
 
+export const ProfileCardInfos = styled.div`
+  width: 100%;
+`
+
 export const ProfileUserContainer = styled.div`
   display: flex;
   align-items: center;
