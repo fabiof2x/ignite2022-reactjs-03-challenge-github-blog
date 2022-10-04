@@ -1,3 +1,12 @@
+import { PostData } from './components/PostData'
+import { PostInfo } from './components/PostInfo'
+import { PostContainer } from './styles'
+
 export function Post() {
-  return <h1>Post Page</h1>
+  return (
+    <PostContainer>
+      <PostInfo />
+      <PostData />
+    </PostContainer>
+  )
 }
